@@ -1,0 +1,12 @@
+{
+  "UNEXPECTED"            : "An unexpected error occurred",
+  "ROUTE_NOT_FOUND"       : "Route '_ROUTE_' not found",
+  "EXPECTING_PARAM_TYPE"  : "Was expecting parameter of type '_TYPE_'",
+  "REQUIRED_PROPERTY"     : "Property '_PROP_' is required",
+  "INVALID_PHONE"         : "Phone Number '_NUMBER_' is invalid",
+  "MISSING_MODEL"         : "'_MODEL_:_ID_' does not exist",
+  "MISSING_NUMBER"        : "'User:phone_number:_NUMBER_' does not exist",
+  "PARAM_NOT_IMPLEMENTED" : "I don't know what to do with '_PARAM_'",
+  "UNAUTHENTICATED"       : "Authentication failed",
+  "PARSE_ERROR"           : "'Error parsing config'"
+}
