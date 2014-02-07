@@ -7,7 +7,7 @@ Modules I use to create Node.js Projects
 Setup:
 ------
 
-In the main `src/` or `lib` folder, define these global functions to enable module loading
+In the main `src/` or `lib/` (or wherever) folder, define these global functions to enable module loading
 
 ````javascript
 global.baseDir = __dirname;
