@@ -19,3 +19,16 @@ global.rqr = function ( file ) {
   return require( absPath( '/' + file ) );
 };
 ````
+
+
+To Use:
+-------
+add to your package.json and npm install
+````javascript
+{
+  "dependencies": {
+    "utils": "git+ssh://git@github.com:mattisfrommars/nodejs-starter.git"
+  }
+}
+    
+````
