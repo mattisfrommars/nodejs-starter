@@ -5,6 +5,9 @@
   "dependencies": {
     "MD5": "~1.2.0",
     "nconf": "~0.6.9",
-    "redis": "~0.10.0"
+    "redis": "~0.10.0",
+    "node-promise": "~0.5.10",
+    "change-case": "~1.0.5",
+    "JQDeferred": "~2.1.0"
   }
 }
