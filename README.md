@@ -36,7 +36,13 @@ add to your package.json and npm install
 Modules:
 --------
 
+  1. [Configuration](#configuration)
+  2. [Routing](#routing)
+  3. [Redis Models](#redis-models)
+
+
 #### Configuration
+[Other Modules](#modules)
 
 In your source folder (where you defined the global.absPath function above), create a `config` folder. The config file will load from json files with the following names `config/default.json`, `config/routes.json` and `config/ENVIRONMENT.json` where ENVIRONMNENT is the NODE:ENV. Defaults to 'development'.
 
@@ -63,6 +69,7 @@ console.log( "Application now listening on port: "+config.get("port") );
 ````
 
 #### Routing
+[Other Modules](#modules)
 
 In your source folder (where you defined the global.absPath function above) create a `controllers` folder and a `middleware` folder.
 
@@ -118,3 +125,8 @@ module.exports = {
   }
 }
 ````
+
+
+#### Redis models
+[Other Modules](#modules)
+@TODO: document this
