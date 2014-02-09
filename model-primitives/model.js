@@ -60,6 +60,14 @@ Model.prototype.requiredParamsCheck = function ( params ) {
   });
 };
 
+Model.prototype.RegexCheck = function RegExpFilter ( reg ) {
+  this.execute = function( value ) {
+    if ( reg.test( value ) === false ) {
+      return value+" did not match pattern";
+    }
+  };
+};
+
 Model.prototype.validationsCheck = function ( params ) {
   var validation;
   for ( var i = 0, l = this.validations.length; i < l; i++ ) {
@@ -67,6 +75,11 @@ Model.prototype.validationsCheck = function ( params ) {
     var propertyName = validation[ 0 ];
     var filter       = validation[ 1 ];
     var value        = params[ propertyName ];
+
+    if ( filter instanceof RegExp ) {
+      var regexFilter = new this.RegexCheck( filter );
+      filter = regexFilter.execute;
+    }
 
     var errorMessage = filter( value );
     if ( errorMessage ) { throw errorMessage; }

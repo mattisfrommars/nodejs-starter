@@ -8,6 +8,14 @@ var Config = function ConfigConstructor() {
   nconf.file( 'default', absPath('/config/default.json') );
 };
 
+/**
+ * Returns a config value at a specific key,
+ *
+ * e.g. config.get("port") will return a value from the JSON file with the same key
+ *
+ * @param  {String} key
+ * @return {String}
+ */
 Config.prototype.get = function ( key ) {
   return nconf.get( key );
 };
