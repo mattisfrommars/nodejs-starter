@@ -5,6 +5,12 @@ module.exports = {
     }
     return str;
   },
+  ifStrReturnFloat : function ( str ) {
+    if ( typeof str === 'string' ) {
+      str = parseFloat( str );
+    }
+    return str;
+  },
   realBoolNull   : function ( str ) {
     switch ( str ) {
       case "false":

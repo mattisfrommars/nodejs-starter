@@ -8,6 +8,7 @@
     "redis": "~0.10.0",
     "node-promise": "~0.5.10",
     "change-case": "~1.0.5",
-    "JQDeferred": "~2.1.0"
+    "JQDeferred": "~2.1.0",
+    "flat": "~1.1.0"
   }
 }

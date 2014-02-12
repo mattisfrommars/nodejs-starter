@@ -1,7 +1,8 @@
 var jqd = require('JQDeferred');
+var flat = require('flat');
 var Model = require( './model' );
-var PARAM_NOT_IMPLEMENTED = require('cs-utils/strings/errors' ).PARAM_NOT_IMPLEMENTED;
-var MISSING_MODEL = require('cs-utils/strings/errors' ).MISSING_MODEL.replace( /_MODEL_/, 'Model' );
+var PARAM_NOT_IMPLEMENTED = require('../strings/errors' ).PARAM_NOT_IMPLEMENTED;
+var MISSING_MODEL = require('../strings/errors' ).MISSING_MODEL.replace( /_MODEL_/, 'Model' );
 
 
 module.exports = function hashModelFactory( namespace ) {
@@ -45,6 +46,10 @@ module.exports = function hashModelFactory( namespace ) {
 
   };
 
+  HashModel.unflattenObject = function ( model ) {
+    return flat.unflatten( model );
+  };
+
   HashModel.parse = function ( model ) {
     var filter;
     for ( var i in model ) {
@@ -56,6 +61,7 @@ module.exports = function hashModelFactory( namespace ) {
         model[i] = filter( model[i] );
       }
     }
+    model = this.unflattenObject( model );
     return model;
   };
 
@@ -162,7 +168,12 @@ module.exports = function hashModelFactory( namespace ) {
     return deferred;
   };
 
+  HashModel.flattenObj = function ( vals ) {
+    return flat.flatten( vals );
+  }
+
   HashModel.create = function ( key, vals ) {
+    vals = this.flattenObj( vals );
     var self = this;
     var didSet = this.defer();
     var didValidate = this.defer();
@@ -171,7 +182,7 @@ module.exports = function hashModelFactory( namespace ) {
       return self.set( key, vals );
     }, didSet.reject)
     .then(function(r){
-      didSet.resolve( r );
+      didSet.resolve(  self.parse( r ) );
       self.postCreate( r );
     }, didSet.reject );
     return didSet;
@@ -207,7 +218,7 @@ module.exports = function hashModelFactory( namespace ) {
       if ( e ) {
         return deferred.reject( e );
       }
-      self.postDestroy();
+      self.postDestroy( key );
       return deferred.resolve( r );
     } );
 
@@ -215,7 +226,7 @@ module.exports = function hashModelFactory( namespace ) {
 
   };
 
-  HashModel.postDestroy = function () {
+  HashModel.postDestroy = function ( key ) {
   };
 
   HashModel.createIfNotExists = function ( key, vals ) {

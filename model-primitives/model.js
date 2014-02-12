@@ -1,10 +1,10 @@
 var all = require( 'node-promise' ).allOrNone;
 var changeCase = require( 'change-case' );
-var filters = require('cs-utils/filters' );
-var hash = require('cs-utils/hash' );
-var REQUIRED_PROPERTY = require('cs-utils/strings/errors' ).REQUIRED_PROPERTY;
-var EXPECTING_FUNCTION = require('cs-utils/strings/errors' ).EXPECTING_PARAM_TYPE.replace( /_TYPE_/, 'function');
-var client = require('cs-utils/configuration/redis' );
+var filters = require('../filters' );
+var hash = require('../hash' );
+var REQUIRED_PROPERTY = require('../strings/errors' ).REQUIRED_PROPERTY;
+var EXPECTING_FUNCTION = require('../strings/errors' ).EXPECTING_PARAM_TYPE.replace( /_TYPE_/, 'function');
+var client = require('../configuration/redis' );
 var jqd = require('JQDeferred');
 
 var Model = function () {
